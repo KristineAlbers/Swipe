@@ -5,7 +5,7 @@ body {
 main {
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr 0.25fr;
+    grid-template-columns: 1fr 40%;
     grid-auto-rows: 75px;
 }
 
@@ -21,6 +21,7 @@ main > * {
     grid-column-end: 3;    
     grid-row-start: 1;
     grid-row-end: 2;
+    transition: transform 0.15s ease;
 }
 
 .deleteItem {
