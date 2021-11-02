@@ -4,6 +4,9 @@ let touchCoordinatesMove;
 let touchend
 let deleteButtonWidth = (window.screen.width * 40) / 100;
 
+document.querySelector('.deleteItem').addEventListener('click', () => {
+    document.querySelector('main').remove();
+});
 
 jokeItem.addEventListener('touchstart', (e) => {
     touchCoordinatesStart = e.touches[0].clientX;
