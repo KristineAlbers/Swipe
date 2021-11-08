@@ -49,9 +49,9 @@ document.querySelector("main").addEventListener("touchstart", (e) => {
       name: parentElement.querySelector(".swipeItem").textContent,
     };
 
-    if (!trash.includes(JSON.stringify(userObject))){
+    if (!trash.includes(JSON.stringify(userObject))) {
       trash.push(JSON.stringify(userObject));
-    };
+    }
 
     console.log(trash);
 

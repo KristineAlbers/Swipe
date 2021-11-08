@@ -5,18 +5,23 @@ axios.get("https://jsonplaceholder.typicode.com/users/").then((response) => {
   users.forEach((user) => {
     const main = document.querySelector("main");
     const section = document.createElement("section");
-    section.classList.add("animate__animated", 'container');
-    section.setAttribute('id', user.id);
+    section.classList.add("animate__animated", "container");
+    section.setAttribute("id", user.id);
 
     const deleteItem = document.createElement("div");
     deleteItem.classList.add("deleteItem");
+    //deleteItem.textContent = 'Delete';
 
-    const jokeItem = document.createElement("article");
-    jokeItem.classList.add("jokeItem");
-    jokeItem.textContent = user.name;
+    const trashbin = document.createElement('i');
+    trashbin.classList.add('fas', 'fa-trash-alt');
+
+    const swipeItem = document.createElement("article");
+    swipeItem.classList.add("swipeItem");
+    swipeItem.textContent = user.name;
 
     main.appendChild(section);
     section.appendChild(deleteItem);
-    section.appendChild(jokeItem);
+    section.appendChild(swipeItem);
+    deleteItem.appendChild(trashbin);
   });
 });

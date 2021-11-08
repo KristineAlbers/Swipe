@@ -1,42 +1,43 @@
-let jokeItem = document.querySelector('.jokeItem');
+let swipeItem = document.querySelector(".swipeItem");
 let touchCoordinatesStart;
 let touchCoordinatesMove;
-let touchend
+let touchend;
 let deleteButtonWidth = (window.screen.width * 40) / 100;
 
-document.querySelector('.deleteItem').addEventListener('click', () => {
-    document.querySelector('main').remove();
+document.querySelector(".deleteItem").addEventListener("click", () => {
+  document.querySelector("main").remove();
 });
 
-jokeItem.addEventListener('touchstart', (e) => {
-    touchCoordinatesStart = e.touches[0].clientX;
+swipeItem.addEventListener("touchstart", (e) => {
+  touchCoordinatesStart = e.touches[0].clientX;
+  //console.log(e.touches[0].clientX);
+});
+
+swipeItem.addEventListener("touchmove", (e) => {
+  touchCoordinatesMove = Math.floor(e.touches[0].clientX);
+  if (
+    touchCoordinatesMove < touchCoordinatesStart &&
+    touchCoordinatesMove > touchCoordinatesStart - deleteButtonWidth
+  ) {
     //console.log(e.touches[0].clientX);
+    swipeItem.style.transform = `translateX(${
+      touchCoordinatesMove - touchCoordinatesStart
+    }px)`;
+  }
 });
 
-jokeItem.addEventListener('touchmove', (e) => {
-    touchCoordinatesMove = Math.floor(e.touches[0].clientX);
-    if (
-        touchCoordinatesMove < touchCoordinatesStart &&
-        touchCoordinatesMove > touchCoordinatesStart - deleteButtonWidth
-        ) {
-        //console.log(e.touches[0].clientX);
-        jokeItem.style.transform = `translateX(${
-            touchCoordinatesMove -touchCoordinatesStart
-        }px)`;}
-});
-
-jokeItem.addEventListener('touchend', (e) => {
-    touchend = Math.floor(e.changedTouches[0].clientX);
-    if (touchend < touchCoordinatesStart - deleteButtonWidth / 2) {
-        //console.log('test')
-        jokeItem.style.transform = `translateX(-${deleteButtonWidth}px)`;
-    } else {
-        jokeItem.style.transform = `translateX(${e.target.offsetLeft})`;
-    }
+swipeItem.addEventListener("touchend", (e) => {
+  touchend = Math.floor(e.changedTouches[0].clientX);
+  if (touchend < touchCoordinatesStart - deleteButtonWidth / 2) {
+    //console.log('test')
+    swipeItem.style.transform = `translateX(-${deleteButtonWidth}px)`;
+  } else {
+    swipeItem.style.transform = `translateX(${e.target.offsetLeft})`;
+  }
 });
 
 /*
-let jokeItem = document.querySelector(".jokeItem");
+let swipeItem = document.querySelector(".swipeItem");
 let touchCoordinatesStart;
 let touchCoordinatesMove;
 let touchend;
@@ -54,33 +55,33 @@ document.querySelector(".deleteItem").addEventListener("click", () => {
 });
 
 //Startkoordinat
-jokeItem.addEventListener("touchstart", (e) => {
+swipeItem.addEventListener("touchstart", (e) => {
   touchCoordinatesStart = e.touches[0].clientX;
   //console.log(e.touches[0].clientX);
 });
 
 //Flytte på knappen
-jokeItem.addEventListener("touchmove", (e) => {
+swipeItem.addEventListener("touchmove", (e) => {
   touchCoordinatesMove = Math.floor(e.touches[0].clientX);
   if (
     touchCoordinatesMove < touchCoordinatesStart &&
     touchCoordinatesMove > touchCoordinatesStart - deleteButtonWidth
   ) {
     //console.log(e.touches[0].clientX);
-    jokeItem.style.transform = `translateX(${
+    swipeItem.style.transform = `translateX(${
       touchCoordinatesMove - touchCoordinatesStart
     }px)`;
   }
 });
 
 //Rykke knappen frem eller tilbage ved slip før/efter midten
-jokeItem.addEventListener("touchend", (e) => {
+swipeItem.addEventListener("touchend", (e) => {
   touchend = Math.floor(e.changedTouches[0].clientX);
   if (touchend < touchCoordinatesStart - deleteButtonWidth / 2) {
     //console.log('test')
-    jokeItem.style.transform = `translateX(-${deleteButtonWidth}px)`;
+    swipeItem.style.transform = `translateX(-${deleteButtonWidth}px)`;
   } else {
-    jokeItem.style.transform = `translateX(${e.target.offsetLeft})`;
+    swipeItem.style.transform = `translateX(${e.target.offsetLeft})`;
   }
 });
 */

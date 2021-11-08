@@ -33,7 +33,7 @@ nav {
   height: 0;
 }
 
-.jokeItem {
+.swipeItem {
   padding: 5px;
   background-color: aquamarine;
   grid-column-start: 1;
